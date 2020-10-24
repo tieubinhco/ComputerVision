@@ -1,0 +1,35 @@
+C:\Users\tieub\source\repos\Example 1\Example 1\bin\Debug\x64\concrt140.dll
+C:\Users\tieub\source\repos\Example 1\Example 1\bin\Debug\x64\cvextern.dll
+C:\Users\tieub\source\repos\Example 1\Example 1\bin\Debug\x64\msvcp140.dll
+C:\Users\tieub\source\repos\Example 1\Example 1\bin\Debug\x64\msvcp140_1.dll
+C:\Users\tieub\source\repos\Example 1\Example 1\bin\Debug\x64\msvcp140_2.dll
+C:\Users\tieub\source\repos\Example 1\Example 1\bin\Debug\x64\msvcp140_codecvt_ids.dll
+C:\Users\tieub\source\repos\Example 1\Example 1\bin\Debug\x64\opencv_videoio_ffmpeg440_64.dll
+C:\Users\tieub\source\repos\Example 1\Example 1\bin\Debug\x64\vcruntime140.dll
+C:\Users\tieub\source\repos\Example 1\Example 1\bin\Debug\x64\vcruntime140_1.dll
+C:\Users\tieub\source\repos\Example 1\Example 1\bin\Debug\x86\concrt140.dll
+C:\Users\tieub\source\repos\Example 1\Example 1\bin\Debug\x86\cvextern.dll
+C:\Users\tieub\source\repos\Example 1\Example 1\bin\Debug\x86\msvcp140.dll
+C:\Users\tieub\source\repos\Example 1\Example 1\bin\Debug\x86\msvcp140_1.dll
+C:\Users\tieub\source\repos\Example 1\Example 1\bin\Debug\x86\msvcp140_2.dll
+C:\Users\tieub\source\repos\Example 1\Example 1\bin\Debug\x86\msvcp140_codecvt_ids.dll
+C:\Users\tieub\source\repos\Example 1\Example 1\bin\Debug\x86\opencv_videoio_ffmpeg440.dll
+C:\Users\tieub\source\repos\Example 1\Example 1\bin\Debug\x86\vcruntime140.dll
+C:\Users\tieub\source\repos\Example 1\Example 1\bin\Debug\Example 1.exe.config
+C:\Users\tieub\source\repos\Example 1\Example 1\bin\Debug\Example 1.exe
+C:\Users\tieub\source\repos\Example 1\Example 1\bin\Debug\Example 1.pdb
+C:\Users\tieub\source\repos\Example 1\Example 1\bin\Debug\Emgu.CV.Bitmap.dll
+C:\Users\tieub\source\repos\Example 1\Example 1\bin\Debug\Emgu.CV.Platform.NetFramework.dll
+C:\Users\tieub\source\repos\Example 1\Example 1\bin\Debug\Emgu.CV.Platform.NetStandard.dll
+C:\Users\tieub\source\repos\Example 1\Example 1\bin\Debug\System.Drawing.Common.dll
+C:\Users\tieub\source\repos\Example 1\Example 1\bin\Debug\Emgu.CV.Bitmap.xml
+C:\Users\tieub\source\repos\Example 1\Example 1\bin\Debug\Emgu.CV.Platform.NetFramework.xml
+C:\Users\tieub\source\repos\Example 1\Example 1\bin\Debug\Emgu.CV.Platform.NetStandard.xml
+C:\Users\tieub\source\repos\Example 1\Example 1\obj\Debug\Example 1.csprojAssemblyReference.cache
+C:\Users\tieub\source\repos\Example 1\Example 1\obj\Debug\Example_1.Form1.resources
+C:\Users\tieub\source\repos\Example 1\Example 1\obj\Debug\Example_1.Properties.Resources.resources
+C:\Users\tieub\source\repos\Example 1\Example 1\obj\Debug\Example 1.csproj.GenerateResource.cache
+C:\Users\tieub\source\repos\Example 1\Example 1\obj\Debug\Example 1.csproj.CoreCompileInputs.cache
+C:\Users\tieub\source\repos\Example 1\Example 1\obj\Debug\Example 1.csproj.CopyComplete
+C:\Users\tieub\source\repos\Example 1\Example 1\obj\Debug\Example 1.exe
+C:\Users\tieub\source\repos\Example 1\Example 1\obj\Debug\Example 1.pdb
