@@ -1,36 +1,58 @@
-﻿using Emgu.CV;
-using Emgu.CV.Structure;
-using System;
-using System.Windows.Forms;
+﻿//Form1.cs
+//24-Oct-20 13:25:06
+//A2-LAPTOP\tieub
 
 namespace Example_1
 {
+    using Emgu.CV;
+    using Emgu.CV.Structure;
+    using System;
+    using System.Windows.Forms;
+
     public partial class Form1 : Form
     {
-        private Image<Bgr, byte> img = null;
         private Image<Gray, byte> grayimg;
+
+        private Image<Bgr, byte> img = null;
 
         public Form1()
         {
             InitializeComponent();
         }
 
-        private void panel2_Paint(object sender, PaintEventArgs e)
+        private void btn_gaussianC_Click(object sender, EventArgs e)
         {
+            Image<Gray, byte> binaryimg = grayimg.CopyBlank();
+            CvInvoke.AdaptiveThreshold(grayimg, binaryimg, 255,
+                Emgu.CV.CvEnum.AdaptiveThresholdType.GaussianC,
+                Emgu.CV.CvEnum.ThresholdType.Binary, 17, 0);
+            imageBox1.Image = binaryimg;
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void btn_gray_2_Click(object sender, EventArgs e)
         {
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            /*OpenFileDialog open_dlg = new OpenFileDialog();
-            if (open_dlg.ShowDialog() == DialogResult.OK)
+            int h = img.Height;
+            int w = img.Width;
+            grayimg = new Image<Gray, byte>(w, h);
+            imageBox1.Image = grayimg;
+            int r, c;
+            for (r = 0; r < h; r++)
             {
-                img = new Image<Bgr, byte>(open_dlg.FileName);
+                for (c = 0; c < w; c++)
+                {
+                    grayimg.Data[r, c, 0] =
+                        (byte)(0.114 * img.Data[r, c, 0] + //blue
+                        0.578 * img.Data[r, c, 1] + //green
+                        0.299 * img.Data[r, c, 2]); //red        }
+                }
             }
-            if (img != null) imageBox1 = img.ToBitmap();*/
+            imageBox1.Image = grayimg;
+        }
+
+        private void btn_gray_Click(object sender, EventArgs e)
+        {
+            grayimg = img.Convert<Gray, byte>();
+            imageBox1.Image = grayimg;
         }
 
         private void btn_Open_Click(object sender, EventArgs e)
@@ -47,29 +69,14 @@ namespace Example_1
             }
         }
 
-        private void btn_gray_Click(object sender, EventArgs e)
+        private void btn_otsu_Click(object sender, EventArgs e)
         {
-            grayimg = img.Convert<Gray, byte>();
-            imageBox1.Image = grayimg;
-        }
-
-        private void btn_gray_2_Click(object sender, EventArgs e)
-        {
-            int h = img.Height;
-            int w = img.Width;
-            grayimg = new Image<Gray, byte>(w, h);
-            imageBox1.Image = grayimg;
-            int r, c;
-            for (r = 0; r < h; r++)
-            {
-                for (c = 0; c < w; c++)
-                {
-                    grayimg.Data[r, c, 0] = (byte)(0.114 * img.Data[r, c, 0] //blue
-                        + 0.578 * img.Data[r, c, 1]        //green
-                        + 0.299 * img.Data[r, c, 2]);        //red        }
-                }
-            }
-            imageBox1.Image = grayimg;
+            Image<Gray, byte> binaryimg = grayimg.CopyBlank();
+            CvInvoke.Threshold(grayimg, binaryimg, 0, 255, Emgu.CV.CvEnum.ThresholdType.Otsu);
+            CvInvoke.AdaptiveThreshold(grayimg, binaryimg, 255,
+                Emgu.CV.CvEnum.AdaptiveThresholdType.GaussianC,
+                Emgu.CV.CvEnum.ThresholdType.Binary, 17, 0);
+            imageBox1.Image = binaryimg;
         }
 
         private void btn_thresholding1_Click(object sender, EventArgs e)
@@ -102,19 +109,8 @@ namespace Example_1
             imageBox1.Image = binaryimg;
         }
 
-        private void btn_otsu_Click(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
-            Image<Gray, byte> binaryimg = grayimg.CopyBlank();
-            CvInvoke.Threshold(grayimg, binaryimg, 0, 255, Emgu.CV.CvEnum.ThresholdType.Otsu);
-            CvInvoke.AdaptiveThreshold(grayimg, binaryimg, 255, Emgu.CV.CvEnum.AdaptiveThresholdType.GaussianC, Emgu.CV.CvEnum.ThresholdType.Binary, 17, 0);
-            imageBox1.Image = binaryimg;
-        }
-
-        private void btn_gaussianC_Click(object sender, EventArgs e)
-        {
-            Image<Gray, byte> binaryimg = grayimg.CopyBlank();
-            CvInvoke.AdaptiveThreshold(grayimg, binaryimg, 255, Emgu.CV.CvEnum.AdaptiveThresholdType.GaussianC, Emgu.CV.CvEnum.ThresholdType.Binary, 17, 0);
-            imageBox1.Image = binaryimg;
         }
     }
 }
