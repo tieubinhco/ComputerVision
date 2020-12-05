@@ -14,10 +14,14 @@ namespace WindowsFormsApp1
     using Emgu.CV.Structure;
     using System;
     using System.Windows.Forms;
+    public int ker_row = Convert.ToInt16(row_txtbox.Text);
+    public int ker_column = Convert.ToInt16(column_txtbox.Text);
     public partial class Form1 : Form
     {
         private Image<Gray, byte> grayimg;
         private Image<Bgr, byte> img = null;
+        private Image<Gray, byte> binaryimg;
+        
         public Form1()
         {
             InitializeComponent();
@@ -45,6 +49,67 @@ namespace WindowsFormsApp1
         {
             grayimg = img.Convert<Gray, byte>();
             pictureBox2.Image = grayimg.ToBitmap();
+        }
+
+
+
+        //Define dilation and erosion images
+        private Image<Gray, byte> dilationimg;
+        private Image<Gray, byte> erosionimg;
+
+        private void row_txtbox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void column_txtbox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        //Define kernel rows, columns
+ 
+        private void dilation_btn_Click(object sender, EventArgs e)
+        {
+            
+
+            int h = binaryimg.Height;
+            int w = binaryimg.Width;
+            dilationimg = binaryimg.CopyBlank();
+
+
+            int i,j,k,l;
+
+            //byte T = byte.Parse(textBox1.Text);
+
+            for (i = 1; i < h-1; i++)
+            {
+                for (j = 1; j < w-1; j++)
+                {
+                    if (binaryimg.Data[i, j, 0] == 255)
+                        for (k = -(ker_row-1)/2; k <= (ker_row-1)/2; k++)
+                            for (l = -(ker_column-1)/2; l <= (ker_column - 1) / 2; l++)
+                                if (k != 0 && l != 0)
+                                    dilationimg.Data[i + l, j + l, 0] = 255;
+                                else continue;
+                    else continue;
+                }
+            }
+            pictureBox2.Image = dilationimg.ToBitmap();
+        }
+
+        private void erosion_btn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void otsu_btn_Click(object sender, EventArgs e)
+        {
+            binaryimg = grayimg.CopyBlank();
+            CvInvoke.Threshold(grayimg, binaryimg, 0, 255, Emgu.CV.CvEnum.ThresholdType.Otsu);
+            CvInvoke.AdaptiveThreshold(grayimg, binaryimg, 255,
+            Emgu.CV.CvEnum.AdaptiveThresholdType.GaussianC,
+            Emgu.CV.CvEnum.ThresholdType.Binary, 17, 0);
+            pictureBox2.Image = binaryimg.ToBitmap();
         }
     }
 }

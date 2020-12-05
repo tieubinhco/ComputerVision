@@ -34,6 +34,11 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.open_btn = new System.Windows.Forms.Button();
             this.btn_gray = new System.Windows.Forms.Button();
+            this.row_txtbox = new System.Windows.Forms.TextBox();
+            this.column_txtbox = new System.Windows.Forms.TextBox();
+            this.dilation_btn = new System.Windows.Forms.Button();
+            this.erosion_btn = new System.Windows.Forms.Button();
+            this.otsu_btn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -96,11 +101,62 @@
             this.btn_gray.UseVisualStyleBackColor = true;
             this.btn_gray.Click += new System.EventHandler(this.btn_gray_Click);
             // 
+            // row_txtbox
+            // 
+            this.row_txtbox.Location = new System.Drawing.Point(785, 108);
+            this.row_txtbox.Name = "row_txtbox";
+            this.row_txtbox.Size = new System.Drawing.Size(35, 20);
+            this.row_txtbox.TabIndex = 4;
+            this.row_txtbox.TextChanged += new System.EventHandler(this.row_txtbox_TextChanged);
+            // 
+            // column_txtbox
+            // 
+            this.column_txtbox.Location = new System.Drawing.Point(825, 108);
+            this.column_txtbox.Name = "column_txtbox";
+            this.column_txtbox.Size = new System.Drawing.Size(35, 20);
+            this.column_txtbox.TabIndex = 4;
+            this.column_txtbox.TextChanged += new System.EventHandler(this.column_txtbox_TextChanged);
+            // 
+            // dilation_btn
+            // 
+            this.dilation_btn.Location = new System.Drawing.Point(785, 147);
+            this.dilation_btn.Name = "dilation_btn";
+            this.dilation_btn.Size = new System.Drawing.Size(75, 23);
+            this.dilation_btn.TabIndex = 5;
+            this.dilation_btn.Text = "Diation";
+            this.dilation_btn.UseVisualStyleBackColor = true;
+            this.dilation_btn.Click += new System.EventHandler(this.dilation_btn_Click);
+            // 
+            // erosion_btn
+            // 
+            this.erosion_btn.Location = new System.Drawing.Point(785, 176);
+            this.erosion_btn.Name = "erosion_btn";
+            this.erosion_btn.Size = new System.Drawing.Size(75, 23);
+            this.erosion_btn.TabIndex = 5;
+            this.erosion_btn.Text = "Erotion";
+            this.erosion_btn.UseVisualStyleBackColor = true;
+            this.erosion_btn.Click += new System.EventHandler(this.erosion_btn_Click);
+            // 
+            // otsu_btn
+            // 
+            this.otsu_btn.Location = new System.Drawing.Point(785, 85);
+            this.otsu_btn.Name = "otsu_btn";
+            this.otsu_btn.Size = new System.Drawing.Size(75, 23);
+            this.otsu_btn.TabIndex = 6;
+            this.otsu_btn.Text = "Otsu";
+            this.otsu_btn.UseVisualStyleBackColor = true;
+            this.otsu_btn.Click += new System.EventHandler(this.otsu_btn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(900, 450);
+            this.Controls.Add(this.otsu_btn);
+            this.Controls.Add(this.erosion_btn);
+            this.Controls.Add(this.dilation_btn);
+            this.Controls.Add(this.column_txtbox);
+            this.Controls.Add(this.row_txtbox);
             this.Controls.Add(this.btn_gray);
             this.Controls.Add(this.open_btn);
             this.Controls.Add(this.panel2);
@@ -115,6 +171,7 @@
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -126,6 +183,11 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button open_btn;
         private System.Windows.Forms.Button btn_gray;
+        private System.Windows.Forms.TextBox row_txtbox;
+        private System.Windows.Forms.TextBox column_txtbox;
+        private System.Windows.Forms.Button dilation_btn;
+        private System.Windows.Forms.Button erosion_btn;
+        private System.Windows.Forms.Button otsu_btn;
     }
 }
 
