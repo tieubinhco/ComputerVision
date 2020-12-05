@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using Emgu.CV;
+using Emgu.CV.Structure;
 
 namespace WindowsFormsApp1
 {
@@ -19,4 +25,5 @@ namespace WindowsFormsApp1
             Application.Run(new Form1());
         }
     }
+ 
 }
