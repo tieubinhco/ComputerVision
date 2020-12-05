@@ -106,7 +106,7 @@ namespace WindowsFormsApp1
             
             erosionimg = binaryimg.CopyBlank();
 
-            int i, j, k, l;
+           int i, j, k, l;
             for (i = 1; i < h - 1; i++)
             {
                 for (j = 1; j < w - 1; j++)
@@ -114,17 +114,16 @@ namespace WindowsFormsApp1
                     int count = 0; //variable to count number of forground elements under Bz
                     if (binaryimg.Data[i, j, 0] == 255)
                     {
-                        for (k = -(ker_row - 1) / 2; k <= (ker_row - 1) / 2; k++)
+                        erosionimg.Data[i, j, 0] = 255;
+                        /*for (k = -(ker_row - 1) / 2; k <= (ker_row - 1) / 2; k++)
                             for (l = -(ker_column - 1) / 2; l <= (ker_column - 1) / 2; l++)
                             {
                                 if (k != 0 && l != 0)
                                     if (binaryimg.Data[i + k, j + l, 0] == 255) 
                                         count += 1;
-                                    else continue;
-
                             }
-                        if (count ==(ker_column * ker_row - 1)) erosionimg.Data[i, j, 0] = 255;
-                        else erosionimg.Data[i, j, 0] = 0;
+                        if (count == (ker_column * ker_row - 1)) erosionimg.Data[i, j, 0] = 255;
+                        else erosionimg.Data[i, j, 0] = 0;*/
                     }
                     else continue;
                 }
