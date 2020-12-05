@@ -39,6 +39,8 @@
             this.dilation_btn = new System.Windows.Forms.Button();
             this.erosion_btn = new System.Windows.Forms.Button();
             this.otsu_btn = new System.Windows.Forms.Button();
+            this.opening_btn = new System.Windows.Forms.Button();
+            this.closing_btn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -147,11 +149,33 @@
             this.otsu_btn.UseVisualStyleBackColor = true;
             this.otsu_btn.Click += new System.EventHandler(this.otsu_btn_Click);
             // 
+            // opening_btn
+            // 
+            this.opening_btn.Location = new System.Drawing.Point(785, 206);
+            this.opening_btn.Name = "opening_btn";
+            this.opening_btn.Size = new System.Drawing.Size(75, 23);
+            this.opening_btn.TabIndex = 7;
+            this.opening_btn.Text = "Opening";
+            this.opening_btn.UseVisualStyleBackColor = true;
+            this.opening_btn.Click += new System.EventHandler(this.opening_btn_Click);
+            // 
+            // closing_btn
+            // 
+            this.closing_btn.Location = new System.Drawing.Point(785, 236);
+            this.closing_btn.Name = "closing_btn";
+            this.closing_btn.Size = new System.Drawing.Size(75, 23);
+            this.closing_btn.TabIndex = 8;
+            this.closing_btn.Text = "Closing";
+            this.closing_btn.UseVisualStyleBackColor = true;
+            this.closing_btn.Click += new System.EventHandler(this.closing_btn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(900, 450);
+            this.Controls.Add(this.closing_btn);
+            this.Controls.Add(this.opening_btn);
             this.Controls.Add(this.otsu_btn);
             this.Controls.Add(this.erosion_btn);
             this.Controls.Add(this.dilation_btn);
@@ -188,6 +212,8 @@
         private System.Windows.Forms.Button dilation_btn;
         private System.Windows.Forms.Button erosion_btn;
         private System.Windows.Forms.Button otsu_btn;
+        private System.Windows.Forms.Button opening_btn;
+        private System.Windows.Forms.Button closing_btn;
     }
 }
 

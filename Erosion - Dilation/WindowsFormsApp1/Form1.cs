@@ -164,5 +164,32 @@ namespace WindowsFormsApp1
             Emgu.CV.CvEnum.ThresholdType.Binary, 17, 0);
             pictureBox2.Image = binaryimg.ToBitmap();
         }
+
+        private void opening_btn_Click(object sender, EventArgs e)
+        {
+            int ker_row = Convert.ToInt16(row_txtbox.Text);
+            int ker_column = Convert.ToInt16(column_txtbox.Text);
+            Image<Gray,Byte> openingimg = binaryimg.CopyBlank();
+
+            openingimg = Erosion(binaryimg, ker_row, ker_column);
+            openingimg = Dilation(openingimg, ker_row, ker_column);
+            pictureBox2.Image = openingimg.ToBitmap();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void closing_btn_Click(object sender, EventArgs e)
+        {
+            int ker_row = Convert.ToInt16(row_txtbox.Text);
+            int ker_column = Convert.ToInt16(column_txtbox.Text);
+            Image<Gray, Byte> closingimg = binaryimg.CopyBlank();
+
+            closingimg = Dilation(binaryimg, ker_row, ker_column);
+            closingimg = Erosion(closingimg, ker_row, ker_column);
+            pictureBox2.Image = closingimg.ToBitmap();
+        }
     }
 }
