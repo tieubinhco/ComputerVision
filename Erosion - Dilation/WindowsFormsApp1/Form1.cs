@@ -62,6 +62,28 @@ namespace WindowsFormsApp1
         {
 
         }
+        private Image<Gray, byte> Dilation(Image<Gray, byte> binaryimg, int ker_row, int ker_column)
+        {
+            int h = binaryimg.Height;
+            int w = binaryimg.Width;
+            dilationimg = binaryimg.CopyBlank();
+              int i, j, k, l;
+
+            for (i = 1; i < h - 1; i++)
+            {
+                for (j = 1; j < w - 1; j++)
+                {
+                    if (binaryimg.Data[i, j, 0] == 255)
+                        for (k = -(ker_row - 1) / 2; k <= (ker_row - 1) / 2; k++)
+                            for (l = -(ker_column - 1) / 2; l <= (ker_column - 1) / 2; l++)
+                                if (k != 0 && l != 0)
+                                    dilationimg.Data[i + k, j + l, 0] = 255;
+                                else continue;
+                    else continue;
+                }
+            }
+            return dilationimg;
+        }
         private Image<Gray, byte> Erosion(Image<Gray, byte> binaryimg, int ker_row, int ker_column)
         {
             //Define kernel rows, columns
@@ -100,27 +122,26 @@ namespace WindowsFormsApp1
             //Define kernel rows, columns
             int ker_row = Convert.ToInt16(row_txtbox.Text);
             int ker_column = Convert.ToInt16(column_txtbox.Text);
-
-            int h = binaryimg.Height;
-            int w = binaryimg.Width;
             dilationimg = binaryimg.CopyBlank();
 
+            /*
+                        int i,j,k,l;
 
-            int i,j,k,l;
-
-            for (i = 1; i < h-1; i++)
-            {
-                for (j = 1; j < w-1; j++)
-                {
-                    if (binaryimg.Data[i, j, 0] == 255)
-                        for (k = -(ker_row-1)/2; k <= (ker_row-1)/2; k++)
-                            for (l = -(ker_column-1)/2; l <= (ker_column - 1) / 2; l++)
-                                if (k != 0 && l != 0)
-                                    dilationimg.Data[i + k, j + l, 0] = 255;
+                        for (i = 1; i < h-1; i++)
+                        {
+                            for (j = 1; j < w-1; j++)
+                            {
+                                if (binaryimg.Data[i, j, 0] == 255)
+                                    for (k = -(ker_row-1)/2; k <= (ker_row-1)/2; k++)
+                                        for (l = -(ker_column-1)/2; l <= (ker_column - 1) / 2; l++)
+                                            if (k != 0 && l != 0)
+                                                dilationimg.Data[i + k, j + l, 0] = 255;
+                                            else continue;
                                 else continue;
-                    else continue;
-                }
-            }
+                            }
+                        }
+            */
+            dilationimg = Dilation(binaryimg, ker_row, ker_column);
             pictureBox2.Image = dilationimg.ToBitmap();
         }
 
@@ -130,35 +151,6 @@ namespace WindowsFormsApp1
             int ker_row = Convert.ToInt16(row_txtbox.Text);
             int ker_column = Convert.ToInt16(column_txtbox.Text);
             erosionimg = binaryimg.CopyBlank();
-
-
-            /*int half_column = (ker_column - 1) / 2;
-            int half_row = (ker_row - 1) / 2;
-
-            int h = binaryimg.Height;
-            int w = binaryimg.Width;
-            
-            erosionimg = binaryimg.CopyBlank();
-
-           int i, j, k, l;
-            for (i = 1; i < h - 1; i++)
-            {
-                for (j = 1; j < w - 1; j++)
-                {
-                    if (binaryimg.Data[i, j, 0] == 255)
-                    {
-                        int count = 0; //variable to count neighbor under Bz
-                        for (k=-half_row;k<=half_row;k++)
-                            for(l= -half_column; l <= half_column; l++)
-                            {
-                                if (binaryimg.Data[i+k, j+l, 0] == 255) count += 1;
-                                else continue;
-                            }
-                        if (count == ker_row * ker_column) erosionimg.Data[i, j, 0] = 255;
-                    }
-                    else continue;
-                }                     
-            }*/
             erosionimg=Erosion(binaryimg, ker_row, ker_column);
             pictureBox2.Image = erosionimg.ToBitmap();
         }
