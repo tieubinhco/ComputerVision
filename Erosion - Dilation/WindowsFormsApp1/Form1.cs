@@ -43,12 +43,8 @@ namespace WindowsFormsApp1
 
         private void btn_gray_Click(object sender, EventArgs e)
         {
-            Image<Gray, byte> binaryimg = grayimg.CopyBlank();
-            CvInvoke.Threshold(grayimg, binaryimg, 0, 255, Emgu.CV.CvEnum.ThresholdType.Otsu);
-            CvInvoke.AdaptiveThreshold(grayimg, binaryimg, 255,
-                Emgu.CV.CvEnum.AdaptiveThresholdType.GaussianC,
-                Emgu.CV.CvEnum.ThresholdType.Binary, 17, 0);
-            pictureBox2.Image = binaryimg.ToBitmap();
+            grayimg = img.Convert<Gray, byte>();
+            pictureBox2.Image = grayimg.ToBitmap();
         }
     }
 }
