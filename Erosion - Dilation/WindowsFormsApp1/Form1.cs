@@ -18,6 +18,7 @@ namespace WindowsFormsApp1
         private Image<Gray, byte> grayimg;
         private Image<Bgr, byte> img = null;
         private Image<Gray, byte> binaryimg;
+
         public Form1()
         {
             InitializeComponent();
@@ -47,12 +48,6 @@ namespace WindowsFormsApp1
             pictureBox2.Image = grayimg.ToBitmap();
         }
 
-
-
-        //Define dilation and erosion images
-        private Image<Gray, byte> dilationimg;
-        private Image<Gray, byte> erosionimg;
-
         private void row_txtbox_TextChanged(object sender, EventArgs e)
         {
 
@@ -66,7 +61,9 @@ namespace WindowsFormsApp1
         {
             int h = binaryimg.Height;
             int w = binaryimg.Width;
-            dilationimg = binaryimg.CopyBlank();
+            int half_column = (ker_column - 1) / 2;
+            int half_row = (ker_row - 1) / 2;
+            Image<Gray, byte> dilationimg = binaryimg.CopyBlank();
               int i, j, k, l;
 
             for (i = 1; i < h - 1; i++)
@@ -74,8 +71,8 @@ namespace WindowsFormsApp1
                 for (j = 1; j < w - 1; j++)
                 {
                     if (binaryimg.Data[i, j, 0] == 255)
-                        for (k = -(ker_row - 1) / 2; k <= (ker_row - 1) / 2; k++)
-                            for (l = -(ker_column - 1) / 2; l <= (ker_column - 1) / 2; l++)
+                        for (k = -half_row; k <= half_row; k++)
+                            for (l = -half_column; l <= half_column; l++)
                                 if (k != 0 && l != 0)
                                     dilationimg.Data[i + k, j + l, 0] = 255;
                                 else continue;
@@ -122,25 +119,7 @@ namespace WindowsFormsApp1
             //Define kernel rows, columns
             int ker_row = Convert.ToInt16(row_txtbox.Text);
             int ker_column = Convert.ToInt16(column_txtbox.Text);
-            dilationimg = binaryimg.CopyBlank();
-
-            /*
-                        int i,j,k,l;
-
-                        for (i = 1; i < h-1; i++)
-                        {
-                            for (j = 1; j < w-1; j++)
-                            {
-                                if (binaryimg.Data[i, j, 0] == 255)
-                                    for (k = -(ker_row-1)/2; k <= (ker_row-1)/2; k++)
-                                        for (l = -(ker_column-1)/2; l <= (ker_column - 1) / 2; l++)
-                                            if (k != 0 && l != 0)
-                                                dilationimg.Data[i + k, j + l, 0] = 255;
-                                            else continue;
-                                else continue;
-                            }
-                        }
-            */
+            Image <Gray, Byte> dilationimg = binaryimg.CopyBlank();
             dilationimg = Dilation(binaryimg, ker_row, ker_column);
             pictureBox2.Image = dilationimg.ToBitmap();
         }
@@ -150,7 +129,7 @@ namespace WindowsFormsApp1
             //Define kernel rows, columns
             int ker_row = Convert.ToInt16(row_txtbox.Text);
             int ker_column = Convert.ToInt16(column_txtbox.Text);
-            erosionimg = binaryimg.CopyBlank();
+            Image<Gray, Byte> erosionimg = binaryimg.CopyBlank();
             erosionimg=Erosion(binaryimg, ker_row, ker_column);
             pictureBox2.Image = erosionimg.ToBitmap();
         }
@@ -170,15 +149,9 @@ namespace WindowsFormsApp1
             int ker_row = Convert.ToInt16(row_txtbox.Text);
             int ker_column = Convert.ToInt16(column_txtbox.Text);
             Image<Gray,Byte> openingimg = binaryimg.CopyBlank();
-
             openingimg = Erosion(binaryimg, ker_row, ker_column);
             openingimg = Dilation(openingimg, ker_row, ker_column);
             pictureBox2.Image = openingimg.ToBitmap();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void closing_btn_Click(object sender, EventArgs e)
@@ -186,7 +159,6 @@ namespace WindowsFormsApp1
             int ker_row = Convert.ToInt16(row_txtbox.Text);
             int ker_column = Convert.ToInt16(column_txtbox.Text);
             Image<Gray, Byte> closingimg = binaryimg.CopyBlank();
-
             closingimg = Dilation(binaryimg, ker_row, ker_column);
             closingimg = Erosion(closingimg, ker_row, ker_column);
             pictureBox2.Image = closingimg.ToBitmap();
