@@ -111,22 +111,20 @@ namespace WindowsFormsApp1
             {
                 for (j = 1; j < w - 1; j++)
                 {
-                    int count = 0; //variable to count number of forground elements under Bz
                     if (binaryimg.Data[i, j, 0] == 255)
                     {
-                        erosionimg.Data[i, j, 0] = 255;
-                        /*for (k = -(ker_row - 1) / 2; k <= (ker_row - 1) / 2; k++)
-                            for (l = -(ker_column - 1) / 2; l <= (ker_column - 1) / 2; l++)
+                        int count = 0; //variable to count neighbor under Bz
+                        for (k=-(ker_row-1/2);k<=(ker_row-1)/2;k++)
+                            for(l= -(ker_column - 1 / 2); l <= (ker_column - 1) / 2; l++)
                             {
-                                if (k != 0 && l != 0)
-                                    if (binaryimg.Data[i + k, j + l, 0] == 255) 
-                                        count += 1;
+                                if (binaryimg.Data[i+k, j+l, 0] == 255) count += 1;
+                                else continue;
                             }
-                        if (count == (ker_column * ker_row - 1)) erosionimg.Data[i, j, 0] = 255;
-                        else erosionimg.Data[i, j, 0] = 0;*/
+                        if (count == ker_row * ker_column) erosionimg.Data[i, j, 0] = 255;
+                        else erosionimg.Data[i, j, 0] = 0;
                     }
                     else continue;
-                }
+                }                     
             }
             pictureBox2.Image = erosionimg.ToBitmap();
         }
