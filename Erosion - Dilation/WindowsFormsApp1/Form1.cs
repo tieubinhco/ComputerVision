@@ -100,6 +100,8 @@ namespace WindowsFormsApp1
             //Define kernel rows, columns
             int ker_row = Convert.ToInt16(row_txtbox.Text);
             int ker_column = Convert.ToInt16(column_txtbox.Text);
+            int half_column = (ker_column - 1) / 2;
+            int half_row = (ker_row - 1) / 2;
 
             int h = binaryimg.Height;
             int w = binaryimg.Width;
@@ -114,14 +116,14 @@ namespace WindowsFormsApp1
                     if (binaryimg.Data[i, j, 0] == 255)
                     {
                         int count = 0; //variable to count neighbor under Bz
-                        for (k=-(ker_row-1/2);k<=(ker_row-1)/2;k++)
-                            for(l= -(ker_column - 1 / 2); l <= (ker_column - 1) / 2; l++)
+                        for (k=-half_row;k<=half_row;k++)
+                            for(l= -half_column; l <= half_column; l++)
                             {
                                 if (binaryimg.Data[i+k, j+l, 0] == 255) count += 1;
                                 else continue;
                             }
                         if (count == ker_row * ker_column) erosionimg.Data[i, j, 0] = 255;
-                        else erosionimg.Data[i, j, 0] = 0;
+                       
                     }
                     else continue;
                 }                     
