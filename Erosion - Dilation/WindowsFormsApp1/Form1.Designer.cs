@@ -123,7 +123,7 @@
             this.dilation_btn.Name = "dilation_btn";
             this.dilation_btn.Size = new System.Drawing.Size(75, 23);
             this.dilation_btn.TabIndex = 5;
-            this.dilation_btn.Text = "Diation";
+            this.dilation_btn.Text = "Dilation";
             this.dilation_btn.UseVisualStyleBackColor = true;
             this.dilation_btn.Click += new System.EventHandler(this.dilation_btn_Click);
             // 

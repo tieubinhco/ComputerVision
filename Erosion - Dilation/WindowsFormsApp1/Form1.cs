@@ -14,8 +14,7 @@ namespace WindowsFormsApp1
     using Emgu.CV.Structure;
     using System;
     using System.Windows.Forms;
-    public int ker_row = Convert.ToInt16(row_txtbox.Text);
-    public int ker_column = Convert.ToInt16(column_txtbox.Text);
+
     public partial class Form1 : Form
     {
         private Image<Gray, byte> grayimg;
@@ -66,11 +65,12 @@ namespace WindowsFormsApp1
         {
 
         }
-        //Define kernel rows, columns
  
         private void dilation_btn_Click(object sender, EventArgs e)
         {
-            
+            //Define kernel rows, columns
+            int ker_row = Convert.ToInt16(row_txtbox.Text);
+            int ker_column = Convert.ToInt16(column_txtbox.Text);
 
             int h = binaryimg.Height;
             int w = binaryimg.Width;
@@ -78,8 +78,6 @@ namespace WindowsFormsApp1
 
 
             int i,j,k,l;
-
-            //byte T = byte.Parse(textBox1.Text);
 
             for (i = 1; i < h-1; i++)
             {
@@ -89,7 +87,7 @@ namespace WindowsFormsApp1
                         for (k = -(ker_row-1)/2; k <= (ker_row-1)/2; k++)
                             for (l = -(ker_column-1)/2; l <= (ker_column - 1) / 2; l++)
                                 if (k != 0 && l != 0)
-                                    dilationimg.Data[i + l, j + l, 0] = 255;
+                                    dilationimg.Data[i + k, j + l, 0] = 255;
                                 else continue;
                     else continue;
                 }
@@ -99,7 +97,39 @@ namespace WindowsFormsApp1
 
         private void erosion_btn_Click(object sender, EventArgs e)
         {
+            //Define kernel rows, columns
+            int ker_row = Convert.ToInt16(row_txtbox.Text);
+            int ker_column = Convert.ToInt16(column_txtbox.Text);
 
+            int h = binaryimg.Height;
+            int w = binaryimg.Width;
+            
+            erosionimg = binaryimg.CopyBlank();
+
+            int i, j, k, l;
+            for (i = 1; i < h - 1; i++)
+            {
+                for (j = 1; j < w - 1; j++)
+                {
+                    int count = 0; //variable to count number of forground elements under Bz
+                    if (binaryimg.Data[i, j, 0] == 255)
+                    {
+                        for (k = -(ker_row - 1) / 2; k <= (ker_row - 1) / 2; k++)
+                            for (l = -(ker_column - 1) / 2; l <= (ker_column - 1) / 2; l++)
+                            {
+                                if (k != 0 && l != 0)
+                                    if (binaryimg.Data[i + k, j + l, 0] == 255) 
+                                        count += 1;
+                                    else continue;
+
+                            }
+                        if (count ==(ker_column * ker_row - 1)) erosionimg.Data[i, j, 0] = 255;
+                        else erosionimg.Data[i, j, 0] = 0;
+                    }
+                    else continue;
+                }
+            }
+            pictureBox2.Image = erosionimg.ToBitmap();
         }
 
         private void otsu_btn_Click(object sender, EventArgs e)
