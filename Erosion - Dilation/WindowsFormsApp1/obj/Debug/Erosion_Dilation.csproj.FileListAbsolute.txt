@@ -33,3 +33,6 @@ D:\Github\ComputerVision\Erosion - Dilation\WindowsFormsApp1\obj\Debug\Erosion_D
 D:\Github\ComputerVision\Erosion - Dilation\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 D:\Github\ComputerVision\Erosion - Dilation\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
 D:\Github\ComputerVision\Erosion - Dilation\WindowsFormsApp1\obj\Debug\Erosion_Dilation.csprojAssemblyReference.cache
+D:\GitHub\ComputerVision\Erosion - Dilation\WindowsFormsApp1\bin\Debug\System.Drawing.Primitives.dll
+D:\GitHub\ComputerVision\Erosion - Dilation\WindowsFormsApp1\bin\Debug\System.Runtime.dll
+D:\GitHub\ComputerVision\Erosion - Dilation\WindowsFormsApp1\bin\Debug\System.Runtime.InteropServices.RuntimeInformation.dll
